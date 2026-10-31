@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MARKFLOW — Analytics Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/premium-features.css" />
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-text">MARK<span class="logo-dot">FLOW</span></span>
+      <span class="logo-accent-dot"></span>
+      <p class="logo-sub">Analytics Intelligence</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item active" data-page="dashboard">
+          <i class="fas fa-chart-line"></i>
+          <span>Dashboard</span>
+          <div class="nav-glow"></div>
+        </li>
+        <li class="nav-item" data-page="campaigns">
+          <i class="fas fa-bullhorn"></i>
+          <span>Campaigns</span>
+          <div class="nav-glow"></div>
+        </li>
+        <li class="nav-item" data-page="ai-optimize">
+          <i class="fas fa-brain"></i>
+          <span>AI Optimize</span>
+          <div class="nav-badge">AI</div>
+          <div class="nav-glow"></div>
+        </li>
+        <li class="nav-item" data-page="audience">
+          <i class="fas fa-users"></i>
+          <span>Audience</span>
+          <div class="nav-glow"></div>
+        </li>
+        <li class="nav-item" data-page="roi">
+          <i class="fas fa-dollar-sign"></i>
+          <span>ROI Tracker</span>
+          <div class="nav-glow"></div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-user">
+      <div class="user-avatar">KM</div>
+      <div class="user-info">
+        <span class="user-name">Karthik M.</span>
+        <span class="user-role">Marketing Director</span>
+      </div>
+      <i class="fas fa-ellipsis-v user-menu-btn"></i>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-wrapper">
+    <!-- TOP HEADER -->
+    <header class="top-header">
+      <div class="header-left">
+        <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <h1 class="page-title" id="pageTitle">Dashboard Overview</h1>
+      </div>
+      <div class="header-right">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" id="globalSearch" placeholder="Search campaigns, metrics..." />
+        </div>
+        <div class="date-picker-wrap">
+          <select class="date-range-select" id="dateRangeSelect">
+            <option>Last 30 Days</option>
+            <option>Last 7 Days</option>
+            <option>Last 90 Days</option>
+            <option>This Year</option>
+          </select>
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <!-- PREMIUM NOTIFICATION BELL -->
+<div class="notification-wrapper">
+  <button
+    class="notif-btn"
+    id="notificationBell"
+    type="button"
+    aria-label="Open notifications"
+    aria-expanded="false"
+    aria-controls="notificationPanel"
+  >
+    <i class="fas fa-bell"></i>
+    <span class="notif-badge" id="notificationBadge">4</span>
+  </button>
+
+  <div
+    class="notification-panel"
+    id="notificationPanel"
+    hidden
+  >
+    <div class="notification-header">
+      <div>
+        <h3>Notifications</h3>
+        <p>You have <span id="unreadCount">4</span> unread alerts</p>
+      </div>
+
+      <button
+        type="button"
+        class="mark-read-btn"
+        id="markAllRead"
+      >
+        Mark all read
+      </button>
+    </div>
+
+    <div class="notification-list" id="notificationList">
+      <div class="notification-item unread">
+        <span class="notification-icon">
+          <i class="fas fa-chart-line"></i>
+        </span>
+        <div>
+          <strong>Campaign performance</strong>
+          <p>Your campaign analytics are ready to review.</p>
+          <small>Just now</small>
+        </div>
+      </div>
+
+      <div class="notification-item unread">
+        <span class="notification-icon">
+          <i class="fas fa-bullhorn"></i>
+        </span>
+        <div>
+          <strong>Campaign update</strong>
+          <p>A new campaign performance update is available.</p>
+          <small>10 minutes ago</small>
+        </div>
+      </div>
+
+      <div class="notification-item unread">
+        <span class="notification-icon">
+          <i class="fas fa-brain"></i>
+        </span>
+        <div>
+          <strong>AI recommendations</strong>
+          <p>Review your latest optimization suggestions.</p>
+          <small>30 minutes ago</small>
+        </div>
+      </div>
+
+      <div class="notification-item unread">
+        <span class="notification-icon">
+          <i class="fas fa-file-alt"></i>
+        </span>
+        <div>
+          <strong>Report reminder</strong>
+          <p>Your next marketing report is ready to generate.</p>
+          <small>1 hour ago</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="notification-footer">
+      <button type="button" id="clearNotifications">
+        Clear notifications
+      </button>
+    </div>
+  </div>
+</div>
+        <button class="btn-generate" id="generateReportBtn">
+          <i class="fas fa-file-chart-line"></i> Generate Report
+        </button>
+      </div>
+    </header>
+
+    <!-- PAGES -->
+    <main class="content-area">
+
+      <!-- ===== PAGE: DASHBOARD ===== -->
+      <section class="page active" id="page-dashboard">
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card fade-in-up" style="animation-delay:0.05s">
+            <div class="kpi-icon"><i class="fas fa-dollar-sign"></i></div>
+            <div class="kpi-body">
+              <p class="kpi-label">Total Revenue</p>
+              <h2 class="kpi-value" data-target="2400000" data-prefix="$" data-format="abbr">$0</h2>
+              <span class="kpi-trend up"><i class="fas fa-arrow-up"></i> +18.5% vs last period</span>
+            </div>
+          </div>
+          <div class="kpi-card fade-in-up" style="animation-delay:0.10s">
+            <div class="kpi-icon"><i class="fas fa-bullhorn"></i></div>
+            <div class="kpi-body">
+              <p class="kpi-label">Active Campaigns</p>
+              <h2 class="kpi-value" data-target="47" data-prefix="" data-format="int">0</h2>
+              <span class="kpi-trend up"><i class="fas fa-arrow-up"></i> +3 this week</span>
+            </div>
+          </div>
+          <div class="kpi-card fade-in-up" style="animation-delay:0.15s">
+            <div class="kpi-icon"><i class="fas fa-percent"></i></div>
+            <div class="kpi-body">
+              <p class="kpi-label">Conversion Rate</p>
+              <h2 class="kpi-value" data-target="4.82" data-prefix="" data-suffix="%" data-format="float">0%</h2>
+              <span class="kpi-trend up"><i class="fas fa-arrow-up"></i> +0.34% improvement</span>
+            </div>
+          </div>
+          <div class="kpi-card fade-in-up" style="animation-delay:0.20s">
+            <div class="kpi-icon ai-icon"><i class="fas fa-brain"></i></div>
+            <div class="kpi-body">
+              <p class="kpi-label">AI Score</p>
+              <h2 class="kpi-value" data-target="94" data-prefix="" data-suffix="/100" data-format="int">0/100</h2>
+              <span class="kpi-trend up"><i class="fas fa-arrow-up"></i> Excellent performance</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart + AI Recs -->
+        <div class="dash-mid-row">
+          <div class="chart-card fade-in-up" style="animation-delay:0.25s">
+            <div class="card-header">
+              <div>
+                <h3>Campaign Performance</h3>
+                <p class="card-sub">Impressions · Clicks · Conversions — Last 30 Days</p>
+              </div>
+              <div class="chart-legend" id="perfLegend"></div>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="campaignPerfChart"></canvas>
+            </div>
+          </div>
+
+          <div class="ai-rec-panel fade-in-up" style="animation-delay:0.30s">
+            <div class="card-header">
+              <div>
+                <h3><i class="fas fa-brain" style="color:var(--red-primary);margin-right:8px;"></i>AI Recommendations</h3>
+                <p class="card-sub">Powered by MARKFLOW AI Engine</p>
+              </div>
+              <span class="ai-live-badge"><span class="pulse-dot"></span>LIVE</span>
+            </div>
+            <div class="ai-rec-list" id="aiRecList">
+              <div class="ai-rec-item">
+                <div class="rec-top">
+                  <span class="badge badge-high">HIGH</span>
+                  <i class="fas fa-wallet rec-icon"></i>
+                </div>
+                <p class="rec-title">Reallocate Budget to Google Ads</p>
+                <p class="rec-desc">Google Ads is outperforming Facebook by 2.3x ROAS. Shifting $8,000 could yield +$18K revenue.</p>
+                <button class="btn-apply" onclick="applyRec(this)">Apply <i class="fas fa-check"></i></button>
+              </div>
+              <div class="ai-rec-item">
+                <div class="rec-top">
+                  <span class="badge badge-high">HIGH</span>
+                  <i class="fas fa-crosshairs rec-icon"></i>
+                </div>
+                <p class="rec-title">Narrow Audience Targeting</p>
+                <p class="rec-desc">Age 25–34 converts at 6.1%. Focusing budget here could reduce CPA by 22%.</p>
+                <button class="btn-apply" onclick="applyRec(this)">Apply <i class="fas fa-check"></i></button>
+              </div>
+              <div class="ai-rec-item">
+                <div class="rec-top">
+                  <span class="badge badge-med">MED</span>
+                  <i class="fas fa-image rec-icon"></i>
+                </div>
+                <p class="rec-title">Refresh Creative Assets</p>
+                <p class="rec-desc">CTR has dropped 12% over 14 days. New creatives are recommended for "Summer Blaze Q3".</p>
+                <button class="btn-apply" onclick="applyRec(this)">Apply <i class="fas fa-check"></i></button>
+              </div>
+              <div class="ai-rec-item">
+                <div class="rec-top">
+                  <span class="badge badge-med">MED</span>
+                  <i class="fas fa-clock rec-icon"></i>
+                </div>
+                <p class="rec-title">Adjust Ad Scheduling</p>
+                <p class="rec-desc">Peak conversions occur 7–9 PM. Increase bids by 30% during those hours.</p>
+                <button class="btn-apply" onclick="applyRec(this)">Apply <i class="fas fa-check"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Campaigns Table -->
+        <div class="table-card fade-in-up" style="animation-delay:0.35s">
+          <div class="card-header">
+            <div>
+              <h3>Recent Campaigns</h3>
+              <p class="card-sub">6 most recent active campaigns</p>
+            </div>
+            <button class="btn-ghost" onclick="navigateTo('campaigns')"><i class="fas fa-external-link-alt"></i> View All</button>
+          </div>
+          <div class="table-scroll">
+            <table class="data-table" id="dashCampTable">
+              <thead>
+                <tr>
+                  <th>Campaign Name</th>
+                  <th>Channel</th>
+                  <th>Budget</th>
+                  <th>Spend</th>
+                  <th>Revenue</th>
+                  <th>ROAS</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="dashCampBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGE: CAMPAIGNS ===== -->
+      <section class="page" id="page-campaigns">
+        <div class="filter-bar fade-in-up">
+          <div class="filter-group">
+            <label>Date Range</label>
+            <select class="filter-select"><option>Last 30 Days</option><option>Last 7 Days</option><option>Last 90 Days</option></select>
+          </div>
+          <div class="filter-group">
+            <label>Channel</label>
+            <select class="filter-select" id="channelFilter">
+              <option value="">All Channels</option>
+              <option value="Google Ads">Google Ads</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Instagram">Instagram</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="TikTok">TikTok</option>
+              <option value="Email">Email</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Status</label>
+            <select class="filter-select" id="statusFilter">
+              <option value="">All Status</option>
+              <option value="Active">Active</option>
+              <option value="Paused">Paused</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+          <button class="btn-primary" onclick="applyFilters()"><i class="fas fa-filter"></i> Apply</button>
+          <button class="btn-ghost ml-auto" onclick="exportCSV()"><i class="fas fa-download"></i> Export CSV</button>
+        </div>
+
+        <div class="camp-charts-row">
+          <div class="chart-card fade-in-up" style="animation-delay:0.10s">
+            <div class="card-header">
+              <div><h3>Performance Trend</h3><p class="card-sub">Multi-channel area chart</p></div>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="perfTrendChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-card fade-in-up" style="animation-delay:0.15s">
+            <div class="card-header">
+              <div><h3>Channel Breakdown</h3><p class="card-sub">Revenue by channel</p></div>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="channelBarChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-card fade-in-up" style="animation-delay:0.20s">
+          <div class="card-header">
+            <div><h3>All Campaigns</h3><p class="card-sub" id="campTableCount">Showing all campaigns</p></div>
+            <div class="search-bar sm">
+              <i class="fas fa-search"></i>
+              <input type="text" id="campSearch" placeholder="Search campaigns..." oninput="filterCampaignTable()" />
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table class="data-table sortable" id="fullCampTable">
+              <thead>
+                <tr>
+                  <th onclick="sortTable('fullCampTable',0)">Campaign Name <i class="fas fa-sort"></i></th>
+                  <th onclick="sortTable('fullCampTable',1)">Channel <i class="fas fa-sort"></i></th>
+                  <th onclick="sortTable('fullCampTable',2)">Budget <i class="fas fa-sort"></i></th>
+                  <th onclick="sortTable('fullCampTable',3)">Spend <i class="fas fa-sort"></i></th>
+                  <th onclick="sortTable('fullCampTable',4)">Revenue <i class="fas fa-sort"></i></th>
+                  <th onclick="sortTable('fullCampTable',5)">ROAS <i class="fas fa-sort"></i></th>
+                  <th onclick="sortTable('fullCampTable',6)">CTR <i class="fas fa-sort"></i></th>
+                  <th onclick="sortTable('fullCampTable',7)">CPA <i class="fas fa-sort"></i></th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="fullCampBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGE: AI OPTIMIZE ===== -->
+      <section class="page" id="page-ai-optimize">
+        <div class="ai-top-row">
+          <div class="ai-status-card fade-in-up">
+            <div class="ai-status-header">
+              <div class="ai-pulse-wrap">
+                <span class="ai-pulse-ring"></span>
+                <i class="fas fa-brain ai-brain-icon"></i>
+              </div>
+              <div>
+                <h3>AI Engine Status</h3>
+                <p class="card-sub">MARKFLOW Neural Network v4.2</p>
+              </div>
+              <span class="badge badge-active">ACTIVE</span>
+            </div>
+            <div class="ai-stats-row">
+              <div class="ai-stat"><span class="ai-stat-val">2.4M</span><span class="ai-stat-lbl">Data Points</span></div>
+              <div class="ai-stat"><span class="ai-stat-val">98.6%</span><span class="ai-stat-lbl">Accuracy</span></div>
+              <div class="ai-stat"><span class="ai-stat-val">340ms</span><span class="ai-stat-lbl">Latency</span></div>
+              <div class="ai-stat"><span class="ai-stat-val">14</span><span class="ai-stat-lbl">Models Active</span></div>
+            </div>
+            <button class="btn-primary full-w" id="refreshAiBtn" onclick="refreshAI()">
+              <i class="fas fa-sync-alt" id="refreshIcon"></i> Refresh Analysis
+            </button>
+          </div>
+
+          <div class="ai-score-card fade-in-up" style="animation-delay:0.10s">
+            <h3>AI Confidence Score</h3>
+            <p class="card-sub">Overall optimization confidence</p>
+            <div class="circular-progress-wrap">
+              <div class="circular-progress" id="aiCircular">
+                <svg viewBox="0 0 120 120">
+                  <circle class="cp-bg" cx="60" cy="60" r="52"/>
+                  <circle class="cp-fill" cx="60" cy="60" r="52" id="aiScoreCircle" stroke-dasharray="326.7" stroke-dashoffset="326.7"/>
+                </svg>
+                <div class="cp-label"><span id="aiScoreVal">0</span><small>%</small></div>
+              </div>
+            </div>
+            <p class="score-note">Based on 30-day campaign data analysis across 8 active campaigns and 5 channels.</p>
+          </div>
+        </div>
+
+        <h3 class="section-title fade-in-up">Optimization Recommendations</h3>
+        <div class="opt-grid">
+          <div class="opt-card fade-in-up" style="animation-delay:0.05s">
+            <div class="opt-icon red"><i class="fas fa-wallet"></i></div>
+            <h4>Budget Reallocation</h4>
+            <p>Redistribute budget from underperforming channels to high-ROAS placements.</p>
+            <div class="opt-metric"><span class="opt-val green">Saves $12K</span></div>
+            <button class="btn-primary sm" onclick="applyOpt(this,'Budget Reallocation')">Apply Now</button>
+          </div>
+          <div class="opt-card fade-in-up" style="animation-delay:0.10s">
+            <div class="opt-icon amber"><i class="fas fa-expand-arrows-alt"></i></div>
+            <h4>Audience Expansion</h4>
+            <p>Lookalike modeling identifies 3.2M new high-intent prospects similar to top converters.</p>
+            <div class="opt-metric"><span class="opt-val green">Reach +23%</span></div>
+            <button class="btn-primary sm" onclick="applyOpt(this,'Audience Expansion')">Apply Now</button>
+          </div>
+          <div class="opt-card fade-in-up" style="animation-delay:0.15s">
+            <div class="opt-icon blue"><i class="fas fa-gavel"></i></div>
+            <h4>Bid Optimization</h4>
+            <p>Smart bidding adjustments based on device, time, and user intent signals.</p>
+            <div class="opt-metric"><span class="opt-val green">CPA -18%</span></div>
+            <button class="btn-primary sm" onclick="applyOpt(this,'Bid Optimization')">Apply Now</button>
+          </div>
+          <div class="opt-card fade-in-up" style="animation-delay:0.20s">
+            <div class="opt-icon purple"><i class="fas fa-paint-brush"></i></div>
+            <h4>Creative Refresh</h4>
+            <p>Ad fatigue detected. Dynamic creative optimization can boost engagement significantly.</p>
+            <div class="opt-metric"><span class="opt-val green">CTR +31%</span></div>
+            <button class="btn-primary sm" onclick="applyOpt(this,'Creative Refresh')">Apply Now</button>
+          </div>
+        </div>
+
+        <div class="ab-section fade-in-up" style="animation-delay:0.25s">
+          <div class="card-header"><div><h3>A/B Test Results</h3><p class="card-sub">Current active tests — statistical significance ≥95%</p></div></div>
+          <div class="table-scroll">
+            <table class="data-table">
+              <thead>
+                <tr><th>Test Name</th><th>Variant A</th><th>Variant B</th><th>Metric</th><th>Winner</th><th>Confidence</th><th>Lift</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Headline Copy Test</td><td>"Get Results Fast"</td><td>"Boost Your ROI Now"</td><td>CTR</td><td><span class="badge badge-active">Variant B</span></td><td>97.3%</td><td class="green">+14.2%</td></tr>
+                <tr><td>CTA Button Color</td><td>Blue Button</td><td>Red Button</td><td>Conversions</td><td><span class="badge badge-active">Variant B</span></td><td>95.8%</td><td class="green">+9.7%</td></tr>
+                <tr><td>Landing Page Layout</td><td>Single Column</td><td>Two Column</td><td>Form Fills</td><td><span class="badge badge-active">Variant A</span></td><td>96.1%</td><td class="green">+6.3%</td></tr>
+                <tr><td>Ad Image Style</td><td>Product Shot</td><td>Lifestyle Photo</td><td>Engagement</td><td><span class="badge badge-active">Variant B</span></td><td>99.1%</td><td class="green">+22.5%</td></tr>
+                <tr><td>Email Subject Line</td><td>Personalized Name</td><td>Emoji + Urgency</td><td>Open Rate</td><td><span class="badge badge-pending">Testing</span></td><td>78.4%</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="chart-card fade-in-up" style="animation-delay:0.30s">
+          <div class="card-header">
+            <div><h3>Predictive Analytics</h3><p class="card-sub">AI-forecasted performance — Next 30 Days</p></div>
+            <span class="badge badge-high">AI FORECAST</span>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="predictiveChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGE: AUDIENCE ===== -->
+      <section class="page" id="page-audience">
+        <div class="audience-top">
+          <div class="chart-card fade-in-up" style="animation-delay:0.05s">
+            <div class="card-header"><div><h3>Age Group Breakdown</h3><p class="card-sub">Audience distribution by age</p></div></div>
+            <div class="chart-wrap donut-wrap"><canvas id="ageDonutChart"></canvas></div>
+          </div>
+          <div class="chart-card fade-in-up" style="animation-delay:0.10s">
+            <div class="card-header"><div><h3>Gender Split</h3><p class="card-sub">Audience gender distribution</p></div></div>
+            <div class="gender-bars" id="genderBars">
+              <div class="gender-bar-item">
+                <div class="gender-label"><span>Male</span><span class="gender-pct">54%</span></div>
+                <div class="gender-track"><div class="gender-fill male" style="width:0%" data-target="54"></div></div>
+              </div>
+              <div class="gender-bar-item">
+                <div class="gender-label"><span>Female</span><span class="gender-pct">41%</span></div>
+                <div class="gender-track"><div class="gender-fill female" style="width:0%" data-target="41"></div></div>
+              </div>
+              <div class="gender-bar-item">
+                <div class="gender-label"><span>Non-Binary</span><span class="gender-pct">5%</span></div>
+                <div class="gender-track"><div class="gender-fill nb" style="width:0%" data-target="5"></div></div>
+              </div>
+            </div>
+            <div class="card-header mt-20"><div><h3>Device Usage</h3><p class="card-sub">Sessions by device type</p></div></div>
+            <div class="device-stats">
+              <div class="device-item"><i class="fas fa-mobile-alt"></i><span>Mobile</span><strong>62%</strong><div class="device-bar"><div style="width:62%;background:var(--red-primary)"></div></div></div>
+              <div class="device-item"><i class="fas fa-desktop"></i><span>Desktop</span><strong>29%</strong><div class="device-bar"><div style="width:29%;background:var(--silver-muted)"></div></div></div>
+              <div class="device-item"><i class="fas fa-tablet-alt"></i><span>Tablet</span><strong>9%</strong><div class="device-bar"><div style="width:9%;background:#6E7FFF"></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="geo-card fade-in-up" style="animation-delay:0.15s">
+          <div class="card-header"><div><h3>Geographic Heatmap</h3><p class="card-sub">Conversion intensity by region</p></div></div>
+          <div class="geo-grid" id="geoGrid"></div>
+        </div>
+
+        <div class="audience-bottom">
+          <div class="table-card fade-in-up" style="animation-delay:0.20s">
+            <div class="card-header"><div><h3>Top Performing Segments</h3><p class="card-sub">Ranked by conversion rate</p></div></div>
+            <div class="table-scroll">
+              <table class="data-table">
+                <thead><tr><th>Segment</th><th>Size</th><th>Conv. Rate</th><th>Avg. Order</th><th>LTV</th><th>Score</th></tr></thead>
+                <tbody>
+                  <tr><td>High-Intent Professionals 25–34</td><td>284K</td><td class="green">8.4%</td><td>$187</td><td>$2,840</td><td><span class="score-pill">96</span></td></tr>
+                  <tr><td>E-commerce Shoppers 18–24</td><td>512K</td><td class="green">6.1%</td><td>$94</td><td>$1,120</td><td><span class="score-pill">88</span></td></tr>
+                  <tr><td>B2B Decision Makers 35–44</td><td>98K</td><td class="green">5.8%</td><td>$440</td><td>$6,600</td><td><span class="score-pill">85</span></td></tr>
+                  <tr><td>Retargeted Abandoners</td><td>76K</td><td class="green">12.3%</td><td>$143</td><td>$1,716</td><td><span class="score-pill">93</span></td></tr>
+                  <tr><td>Loyalty Program Members</td><td>189K</td><td class="green">9.7%</td><td>$220</td><td>$4,180</td><td><span class="score-pill">91</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="interests-card fade-in-up" style="animation-delay:0.25s">
+            <div class="card-header"><div><h3>Behavioral Interests</h3><p class="card-sub">Top interest categories driving conversions</p></div></div>
+            <div class="interest-tags" id="interestTags"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGE: ROI TRACKER ===== -->
+      <section class="page" id="page-roi">
+        <div class="roi-kpi-row">
+          <div class="kpi-card fade-in-up">
+            <div class="kpi-icon"><i class="fas fa-wallet"></i></div>
+            <div class="kpi-body">
+              <p class="kpi-label">Total Budget</p>
+              <h2 class="kpi-value">$485,000</h2>
+              <span class="kpi-trend neutral"><i class="fas fa-minus"></i> Allocated for period</span>
+            </div>
+          </div>
+          <div class="kpi-card fade-in-up" style="animation-delay:0.05s">
+            <div class="kpi-icon"><i class="fas fa-credit-card"></i></div>
+            <div class="kpi-body">
+              <p class="kpi-label">Total Spend</p>
+              <h2 class="kpi-value">$398,240</h2>
+              <span class="kpi-trend neutral"><i class="fas fa-info-circle"></i> 82.1% utilization</span>
+            </div>
+          </div>
+          <div class="kpi-card fade-in-up" style="animation-delay:0.10s">
+            <div class="kpi-icon"><i class="fas fa-chart-bar"></i></div>
+            <div class="kpi-body">
+              <p class="kpi-label">Total Revenue</p>
+              <h2 class="kpi-value">$2,400,000</h2>
+              <span class="kpi-trend up"><i class="fas fa-arrow-up"></i> 6.03x overall ROAS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="roi-mid-row">
+          <div class="roas-calc-card fade-in-up" style="animation-delay:0.15s">
+            <div class="card-header"><div><h3><i class="fas fa-calculator" style="color:var(--red-primary);margin-right:8px;"></i>ROAS Calculator</h3><p class="card-sub">Live interactive calculation</p></div></div>
+            <div class="calc-inputs">
+              <div class="calc-field">
+                <label>Ad Spend (\$)</label>
+                <input type="number" id="calcSpend" value="10000" oninput="calcROAS()" />
+              </div>
+              <div class="calc-field">
+                <label>Revenue Generated (\$)</label>
+                <input type="number" id="calcRevenue" value="42000" oninput="calcROAS()" />
+              </div>
+              <div class="calc-field">
+                <label>Campaign Cost (\$)</label>
+                <input type="number" id="calcCost" value="2000" oninput="calcROAS()" />
+              </div>
+            </div>
+            <div class="calc-results">
+              <div class="calc-result-item">
+                <span class="calc-lbl">ROAS</span>
+                <span class="calc-val" id="calcRoas">4.20x</span>
+              </div>
+              <div class="calc-result-item">
+                <span class="calc-lbl">ROI</span>
+                <span class="calc-val" id="calcRoi">300%</span>
+              </div>
+              <div class="calc-result-item">
+                <span class="calc-lbl">Net Profit</span>
+                <span class="calc-val" id="calcProfit">$30,000</span>
+              </div>
+              <div class="calc-result-item">
+                <span class="calc-lbl">Profit Margin</span>
+                <span class="calc-val" id="calcMargin">71.4%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-card fade-in-up" style="animation-delay:0.20s">
+            <div class="card-header"><div><h3>Budget vs Revenue</h3><p class="card-sub">Monthly grouped comparison</p></div></div>
+            <div class="chart-wrap"><canvas id="budgetRevenueChart"></canvas></div>
+          </div>
+        </div>
+
+        <div class="chart-card fade-in-up" style="animation-delay:0.25s">
+          <div class="card-header"><div><h3>Monthly Revenue Trend</h3><p class="card-sub">12-month performance overview</p></div></div>
+          <div class="chart-wrap"><canvas id="monthlyTrendChart"></canvas></div>
+        </div>
+
+        <div class="table-card fade-in-up" style="animation-delay:0.30s">
+          <div class="card-header"><div><h3>Campaign ROI Ranking</h3><p class="card-sub">Ranked by return on investment</p></div></div>
+          <div class="table-scroll">
+            <table class="data-table">
+              <thead><tr><th>Rank</th><th>Campaign</th><th>Spend</th><th>Revenue</th><th>ROAS</th><th>ROI</th><th>Status</th></tr></thead>
+              <tbody id="roiRankBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/ai-engine.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/premium-features.js"></script>
+</body>
+</html>
